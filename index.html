@@ -83,11 +83,26 @@
               unityInstance.SetFullscreen(1);
             };
           }
-        }).catch((message) => {
+        }).then((unityInstance) => {
+        console.log('Instance created',window.Telegram.WebApp);
+                window.unityInstance = unityInstance;
+                window.unityInstance.SendMessage("GameManager", "SetWebAppUser", JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user));
+            }).catch((message) => {
           alert(message);
         });
       };
       document.body.appendChild(script);
+    </script>
+	
+	<script>
+    if(window.Telegram.WebApp){
+        window.Telegram.WebApp.onEvent('popupClosed',async (obj)=>{
+            console.log('#popupClosed',obj)
+            if( window.unityInstance){
+                window.unityInstance.SendMessage("GameManager", "popupClosed", JSON.stringify(obj.data));
+            }
+        })
+    }
     </script>
   </body>
 </html>
