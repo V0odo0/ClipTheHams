@@ -75,7 +75,7 @@
           progressBarFull.style.width = `${100 * progress}%`;
         }).then((unityInstance) => {
           loadingCover.style.display = "none";
-			unityInstance.SendMessage("GameManager", "SetWebAppUser", JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user));
+			unityInstance.SendMessage("TelegramController", "SetWebAppUser", JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user));
           if (canFullscreen) {
             if (!hideFullScreenButton) {
               fullscreenButton.style.display = "";
@@ -96,7 +96,7 @@
         window.Telegram.WebApp.onEvent('popupClosed',async (obj)=>{
             console.log('#popupClosed',obj)
             if( window.unityInstance){
-                window.unityInstance.SendMessage("GameManager", "popupClosed", JSON.stringify(obj.data));
+                window.unityInstance.SendMessage("TelegramController", "popupClosed", JSON.stringify(obj.data));
             }
         })
     }
