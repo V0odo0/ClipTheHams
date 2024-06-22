@@ -1,0 +1,6 @@
+{
+  "name": "Ham #0",
+  "description": "What about a round of ham?",
+  "image": "https://raw.githubusercontent.com/V0odo0/ClipTheHams/main/logo.png",
+  "attributes": [{ "trait_type": "Awesomeness", "value": "Super cool" }]
+}
